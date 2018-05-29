@@ -1,0 +1,12 @@
+
+
+ /* Run everything that contains /admin/ but real files through admin.html
+    RewriteCond %{REQUEST_FILENAME} -s
+    RewriteCond %{REQUEST_FILENAME} -l
+    RewriteCond %{REQUEST_FILENAME} -d
+
+    RewriteRule ^.*$ - [NC,L]
+
+
+    RewriteRule ^(.*)$ /index.html [NC,L]
+*/
