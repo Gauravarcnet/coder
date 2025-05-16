@@ -1,3 +1,6 @@
+
+
+
 class Node{
     constructor(data){
         this.left = null;
@@ -34,10 +37,23 @@ class BST {
             }
         }
     }
+    traversalTreeInOrder() {
+        if (root.data === null) {
+            return []
+        }
+        let result = [];
+        if (!root.left === null) {
+            traversalTreeInOrder(root.left)
+        }
+        // result.push(root.data)
+        if (!root.right === null) {
+            traversalTreeInOrder(root.right)
+        }
+        return result;
+    }
 }
 
 const bst = new BST();
-console.log("bst>>>", bst);
 bst.insert(9);
 bst.insert(4);
 bst.insert(15);
@@ -47,4 +63,4 @@ bst.insert(1);
 bst.insert(5);
 bst.insert(12);
 bst.insert(17);
-console.log("BST tr>>", bst.root);
+console.log(bst.traversalTreeInOrder());
