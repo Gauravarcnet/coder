@@ -1,28 +1,25 @@
 function MaxProfit(prices) {
-
     let maxProfit = 0;
     let leftPointer = 0;
     let rightPointer = 1;
-    let buyTradeDay;
-    let sellTradeDay;
+    let buyTradeDay = -1;
+    let sellTradeDay = -1;
 
-    for (rightPointer; rightPointer < prices.length;) {
-        // If the current profit is positive, calculate maxProfit
+    while (rightPointer < prices.length) {
         if (prices[rightPointer] > prices[leftPointer]) {
             const currentProfit = prices[rightPointer] - prices[leftPointer];
-            maxProfit = Math.max(maxProfit, currentProfit);
-            buyTradeDay = leftPointer;
-            sellTradeDay = rightPointer;
+            if (currentProfit > maxProfit) {
+                maxProfit = currentProfit;
+                buyTradeDay = leftPointer;
+                sellTradeDay = rightPointer;
+            }
         } else {
-            // If the price at rightPointer is lower, move the leftPointer to rightPointer
             leftPointer = rightPointer;
         }
-        // Always move the rightPointer
         rightPointer++;
     }
-    return ({ maxProfit, buyTradeDay, sellTradeDay })
+    // console.log(maxProfit);
+    return { maxProfit, buyTradeDay, sellTradeDay };
 }
 
-    
-
-console.log("MaxDiff>>>", MaxProfit([1,2,4,2,5,7,2,4,9,0,9]));
+console.log("MaxDiff>>>", MaxProfit([1, 2, 4, 2, 5, 7, 2, 4, 9, 0, 8]));
